@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:weatherappdynamic/app/routes/routes.dart';
+import 'package:weatherappdynamic/screens/auth/forgotPassword/view/forgotPassword.dart';
+import 'package:weatherappdynamic/screens/auth/login/view/loginScreen.dart';
+import 'package:weatherappdynamic/screens/auth/singUp/view/singUpScreen.dart';
 import 'package:weatherappdynamic/screens/home/Home_Screen.dart';
 import 'package:weatherappdynamic/screens/homeDetails/Home_Details_Screen.dart';
 import 'package:weatherappdynamic/screens/splash/Splash_Screen.dart';
@@ -20,7 +23,15 @@ class Routes {
             builder: (BuildContext context) => Home_Details_Screen(
               cityName: args.toString(),
             ));
-
+      case AppRoutes.loginNumber:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => LoginScreen());
+      case AppRoutes.signUp:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => SignUpScreen());
+      case AppRoutes.forgotPass:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => ForgotPassword());
       default:
         return MaterialPageRoute(builder: (_) {
           return const Scaffold(
