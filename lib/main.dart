@@ -7,10 +7,13 @@ import 'package:provider/provider.dart';
 import 'package:weatherappdynamic/app/routes/routes.dart';
 import 'package:weatherappdynamic/app/routes/routes_call.dart';
 import 'package:weatherappdynamic/app/theme/themes.dart';
+import 'package:weatherappdynamic/screens/auth/forgotPassword/viewModal/forgotViewModal.dart';
+import 'package:weatherappdynamic/screens/homeDetails/homeDetailsVIewModal.dart';
 import 'firebase_options.dart';
 import 'repository/counter_provider.dart';
 import 'screens/auth/login/viewModal/LoginAuthViewModal.dart';
 import 'screens/auth/singUp/viewModal/RegisterAuthViewModal.dart';
+import 'screens/home/viewModal/homeViewModal.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,11 +21,13 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // runApp(const MyApp());
-  runApp(DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => const MyApp()));
+  runApp(const MyApp());
+  // runApp(DevicePreview(
+  //     enabled: !kReleaseMode,
+  //     builder: (context) => const MyApp()));
 }
+
+final box = GetStorage();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -33,6 +38,9 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => CounterProvider()),
           ChangeNotifierProvider(create: (_) => LoginAuthViewModal()),
           ChangeNotifierProvider(create: (_) => RegisterAuthViewModal()),
+          ChangeNotifierProvider(create: (_) => HomeViewModal()),
+          ChangeNotifierProvider(create: (_) => HomeDetailViewModal()),
+          ChangeNotifierProvider(create: (_) => ForgotPasswordViewModal()),
         ],
         child: MaterialApp(
           title: "E-Commerce",

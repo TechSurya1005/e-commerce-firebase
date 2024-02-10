@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:weatherappdynamic/app/routes/routes.dart';
 import 'package:weatherappdynamic/constant/colors.dart';
+import 'package:weatherappdynamic/data/modal/user.dart';
 import 'package:weatherappdynamic/screens/auth/login/viewModal/LoginAuthViewModal.dart';
 import 'package:weatherappdynamic/utils/customInputFields.dart';
 import 'package:weatherappdynamic/utils/customPasswordFields.dart';
@@ -22,8 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-
-  final _formState = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -64,19 +64,26 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             const SizedBox(height: 10,),
-            CustomButton(title: 'Login',onTap: () {
-              if(_emailController.text.isEmpty && _passwordController.text.isEmpty ){
-                Utils.toastMessage("Please fill required fields", errorColor);
-              }else if(!_emailController.text.contains("@")){
-                Utils.toastMessage("Please enter valid email address", errorColor);
-              }else if (_passwordController.text.isEmpty){
-                Utils.toastMessage("Please enter password", errorColor);
-              }else if(_passwordController.text.length < 8){
-                Utils.toastMessage("Please enter password at least 8 length", errorColor);
-              }
-              else{
-                Navigator.pushReplacementNamed(context, AppRoutes.home);
-              }
+            Consumer<LoginAuthViewModal>(builder: (context, value, child) {
+              return CustomButton(isLoading: value.isLoading,title: 'Login',onTap: () {
+                if(_emailController.text.isEmpty && _passwordController.text.isEmpty ){
+                  Utils.toastMessage("Please fill required fields", errorColor);
+                }else if(!_emailController.text.contains("@")){
+                  Utils.toastMessage("Please enter valid email address", errorColor);
+                }else if (_passwordController.text.isEmpty){
+                  Utils.toastMessage("Please enter password", errorColor);
+                }else if(_passwordController.text.length < 8){
+                  Utils.toastMessage("Please enter password at least 8 length", errorColor);
+                }
+                else{
+                  final userData =  UserData(email: _emailController.text,password:_passwordController.text);
+                  value.signIn(userData,context).then((value) {
+                    _emailController.clear();
+                    _passwordController.clear();
+                    return value;
+                  });
+                }
+              },);
             },),
             const SizedBox(height: 50,),
             InkWell(

@@ -5,8 +5,9 @@ import 'package:weatherappdynamic/constant/colors.dart';
 
 class CustomButton extends StatelessWidget {
   final String title;
+  final bool isLoading;
   final VoidCallback? onTap;
-  const CustomButton({super.key, required this.title, this.onTap});
+  const CustomButton({super.key, required this.title, this.onTap, required this.isLoading});
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +23,11 @@ class CustomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(16.0),
           color: accentColor,
         ),
-        child: Text(title,style: GoogleFonts.poppins(
+        child: isLoading == false ? Text(title,style: GoogleFonts.poppins(
           color: Colors.white,
           fontSize: 18,
           fontWeight: FontWeight.w600,
-        ),),
+        ),) : const CircularProgressIndicator(color: Colors.white,),
       ),
     );
   }

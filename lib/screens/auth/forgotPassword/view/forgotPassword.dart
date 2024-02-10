@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:weatherappdynamic/constant/colors.dart';
+import 'package:weatherappdynamic/screens/auth/forgotPassword/viewModal/forgotViewModal.dart';
 import 'package:weatherappdynamic/utils/customInputFields.dart';
 import 'package:weatherappdynamic/utils/custome_button.dart';
+import 'package:weatherappdynamic/utils/utils.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -12,6 +15,9 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
+
+  TextEditingController _emailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,9 +50,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   "Please, enter your email address. You will receive a link to create a new password via email.",style: Theme.of(context).textTheme.labelSmall,),
               ),
               const SizedBox(height: 20,),
-              const customInputFields(hintText: "Enter your email",keyboardType: TextInputType.emailAddress,prefixIcon: "assets/svg/email_outline.svg",),
+              customInputFields(controller: _emailController,hintText: "Enter your email",keyboardType: TextInputType.emailAddress,prefixIcon: "assets/svg/email_outline.svg",),
               const SizedBox(height: 30,),
-              CustomButton(title: 'Submit',onTap: () {
+              Consumer<ForgotPasswordViewModal>(builder: (context, value, child) {
+                return CustomButton(isLoading: value.isLoading,title: 'Submit',onTap: () {
+                  if(_emailController.text.isEmpty){
+                    Utils.toastMessage("Please enter register email address", errorColor);
+                  }{
+                    value.forgotPassword(_emailController.text.trim(),context);
+                  }
+                },);
               },),
               const SizedBox(height: 50,),
             ],

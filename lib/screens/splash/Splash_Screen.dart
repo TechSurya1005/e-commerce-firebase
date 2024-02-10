@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:weatherappdynamic/app/routes/routes.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weatherappdynamic/app/theme/themes.dart';
+import 'package:weatherappdynamic/main.dart';
 
 class Splash_Screen extends StatefulWidget {
   const Splash_Screen({super.key});
@@ -17,7 +19,11 @@ class _Splash_ScreenState extends State<Splash_Screen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 2), () {
-      Navigator.pushReplacementNamed(context, AppRoutes.loginNumber);
+      if(box.read("isLogged")==true){
+        Navigator.pushReplacementNamed(context, AppRoutes.home);
+      }else{
+        Navigator.pushReplacementNamed(context, AppRoutes.loginNumber);
+      }
     });
     super.initState();
   }

@@ -25,6 +25,7 @@ dependencies:
   another_flushbar: ^1.12.30
   firebase_core: ^2.25.0
   firebase_auth: ^4.17.4
+  cloud_firestore: ^4.15.4
 
 
 dev_dependencies:

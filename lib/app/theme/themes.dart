@@ -43,7 +43,7 @@ class MyTheme {
   );
 
   static ThemeData darkTheme = ThemeData(
-      scaffoldBackgroundColor: primaryColor,
+      scaffoldBackgroundColor: primaryDarkColor,
       primaryColor: primaryDarkColor,
       buttonTheme: ButtonThemeData(
           buttonColor: accentDarkColor
