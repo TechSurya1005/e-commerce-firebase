@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weatherappdynamic/app/routes/routes.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:weatherappdynamic/app/theme/themes.dart';
 
 class Splash_Screen extends StatefulWidget {
   const Splash_Screen({super.key});
@@ -15,7 +17,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 2), () {
-      Navigator.pushReplacementNamed(context, AppRoutes.home);
+      Navigator.pushReplacementNamed(context, AppRoutes.loginNumber);
     });
     super.initState();
   }
@@ -28,26 +30,20 @@ class _Splash_ScreenState extends State<Splash_Screen> {
         alignment: Alignment.center,
         height: size.height,
         width: size.width,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/images/blur_bg.jpg",),fit: BoxFit.cover,
-          )
-        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const AspectRatio(
-                aspectRatio: 16/9,
-                child: Image(image: AssetImage("assets/images/weatherPNG.png"),fit: BoxFit.contain,)),
+            AspectRatio(
+                aspectRatio: 13/9,
+                child: SvgPicture.asset(
+                    "assets/svg/splash_svg.svg",
+                    semanticsLabel: 'Acme Logo'
+                )),
             const SizedBox(
               height: 20,
             ),
-            Text("WeatherApp",style: GoogleFonts.poppins(
-              fontSize: 22,
-              color: Colors.white,
-              fontWeight: FontWeight.w600
-            ),)
+            Text("E-Commerce",style: Theme.of(context).textTheme.titleLarge)
           ],
         ),
       ),

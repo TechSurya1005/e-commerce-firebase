@@ -1,4 +1,4 @@
-package com.surya.weatherappdynamic
+package com.surya.ecommerce
 
 import io.flutter.embedding.android.FlutterActivity
 

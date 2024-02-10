@@ -20,6 +20,11 @@ dependencies:
   google_fonts: ^6.1.0
   font_awesome_flutter: ^10.6.0
   device_preview: ^1.1.0
+  flutter_svg: ^2.0.9
+  fluttertoast: ^8.2.4
+  another_flushbar: ^1.12.30
+  firebase_core: ^2.25.0
+  firebase_auth: ^4.17.4
 
 
 dev_dependencies:
@@ -33,6 +38,7 @@ flutter:
   assets:
    - assets/images/
    - assets/icons/
+   - assets/svg/
 
   # fonts:
   #   - family: Schyler

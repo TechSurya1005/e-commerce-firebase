@@ -4,8 +4,9 @@ import 'package:weatherappdynamic/app/routes/routes.dart';
 import 'package:weatherappdynamic/screens/auth/forgotPassword/view/forgotPassword.dart';
 import 'package:weatherappdynamic/screens/auth/login/view/loginScreen.dart';
 import 'package:weatherappdynamic/screens/auth/singUp/view/singUpScreen.dart';
-import 'package:weatherappdynamic/screens/home/Home_Screen.dart';
+import 'package:weatherappdynamic/screens/home/view/Home_Screen.dart';
 import 'package:weatherappdynamic/screens/homeDetails/Home_Details_Screen.dart';
+import 'package:weatherappdynamic/screens/profile/view/profile.dart';
 import 'package:weatherappdynamic/screens/splash/Splash_Screen.dart';
 
 class Routes {
@@ -21,7 +22,7 @@ class Routes {
       case AppRoutes.homeMain:
         return MaterialPageRoute(
             builder: (BuildContext context) => Home_Details_Screen(
-              cityName: args.toString(),
+              productName: args.toString(),
             ));
       case AppRoutes.loginNumber:
         return MaterialPageRoute(
@@ -32,6 +33,8 @@ class Routes {
       case AppRoutes.forgotPass:
         return MaterialPageRoute(
             builder: (BuildContext context) => ForgotPassword());
+      case AppRoutes.profile:
+        return MaterialPageRoute(builder: (BuildContext context)=> ProfilePage());
       default:
         return MaterialPageRoute(builder: (_) {
           return const Scaffold(

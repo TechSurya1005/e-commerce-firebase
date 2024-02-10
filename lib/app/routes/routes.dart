@@ -9,6 +9,7 @@ class AppRoutes {
   static const changePass = '/changePass';
   static const homeMain = '/homemain';
   static const home = '/home';
+  static const profile = '/profile';
   static const vegetableAndFruits = '/vegetableAndFruits';
   static const vegetableAndFruitDetails = '/vegetableAndFruitsDetails';
   static const orderDetails = '/orderDetails';
