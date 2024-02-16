@@ -115,87 +115,9 @@ class MyTextTheme {
         fontSize: 18,
         fontWeight: FontWeight.w500
     ),
-
-
-    // headline1: GoogleFonts.poppins(
-    //     color: textColor,
-    //     fontSize: 22,
-    //     fontWeight: FontWeight.w600
-    // ),
-    // headline2: GoogleFonts.poppins(
-    //     color: textColor,
-    //     fontSize: 18,
-    //     fontWeight: FontWeight.w600
-    // ),
-    // headline3:  GoogleFonts.poppins(
-    //     color: textColor,
-    //     fontSize: 16,
-    //     fontWeight: FontWeight.w600
-    // ),
-    // headline4: GoogleFonts.poppins(
-    //     color: textColor,
-    //     fontSize: 28,
-    //     fontWeight: FontWeight.w600
-    // ),
-    // headline5: GoogleFonts.poppins(
-    //     color: textColor,
-    //     fontSize: 22,
-    //     fontWeight: FontWeight.w600
-    // ),
-    // headline6:  GoogleFonts.poppins(
-    //     color: textColor,
-    //     fontSize: 18,
-    //     fontWeight: FontWeight.w600
-    // ),
-
   );
-
   static TextTheme darkTextTheme = TextTheme(
-    // bodyLarge: GoogleFonts.poppins(
-    //     color: textDarkColor,
-    //     fontSize: 22,
-    //     fontWeight: FontWeight.w500
-    // ),
-    // bodyMedium:  GoogleFonts.poppins(
-    //     color: textDarkColor,
-    //     fontSize: 18,
-    //     fontWeight: FontWeight.w500
-    // ),
-    // bodySmall:  GoogleFonts.poppins(
-    //     color: textDarkColor,
-    //     fontSize: 16,
-    //     fontWeight: FontWeight.w500
-    // ),
-    //
-    // bodyText1: GoogleFonts.poppins(
-    //     color: textDarkColor,
-    //     fontSize: 16,
-    //     fontWeight: FontWeight.w500
-    // ),
-    // bodyText2: GoogleFonts.poppins(
-    //     color: textDarkColor,
-    //     fontSize: 14,
-    //     fontWeight: FontWeight.w500
-    // ),
-    //
-    // button:  GoogleFonts.poppins(
-    //     color: textDarkColor,
-    //     fontSize: 16,
-    //     fontWeight: FontWeight.w600
-    // ),
-    //
-    // subtitle1: GoogleFonts.poppins(
-    //     color: textDarkColor,
-    //     fontSize: 14,
-    //     fontWeight: FontWeight.w500
-    // ),
-    // subtitle2: GoogleFonts.poppins(
-    //     color: textDarkColor,
-    //     fontSize: 16,
-    //     fontWeight: FontWeight.w500
-    // ),
-
-    titleLarge: GoogleFonts.poppins(
+      titleLarge: GoogleFonts.poppins(
         color: textDarkColor,
         fontSize: 34,
         fontWeight: FontWeight.w600

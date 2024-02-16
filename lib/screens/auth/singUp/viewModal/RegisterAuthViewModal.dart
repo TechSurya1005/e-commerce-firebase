@@ -48,6 +48,7 @@ class RegisterAuthViewModal extends ChangeNotifier{
   Future<UserData> createUser(UserData user) async {
     try {
       List<String> emails = [];
+      String uid = await getUserID();
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('Users').get();
       querySnapshot.docs.forEach((doc) {
         emails.add(doc["email"]);
@@ -56,7 +57,7 @@ class RegisterAuthViewModal extends ChangeNotifier{
       if(emails.contains(user.email)){
         print("Data already added!");
       }else{
-        await _db.collection("Users").add(user.toJson());
+        await _db.collection("Users").doc(uid).set(user.toJson());
         print("Data added");
       }
       return user;
@@ -65,6 +66,13 @@ class RegisterAuthViewModal extends ChangeNotifier{
       Utils.toastMessage("Failed!", errorColor);
       throw error;
     }
+  }
+
+
+  Future<String> getUserID() async{
+    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    String uid =  firebaseAuth.currentUser!.uid;
+    return uid;
   }
 
 

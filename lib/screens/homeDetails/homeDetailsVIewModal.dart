@@ -1,21 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:weatherappdynamic/data/modal/productDetailsModal.dart';
 
 class HomeDetailViewModal extends ChangeNotifier {
 
-  Map<String, dynamic> _products = {};
-  Map<String, dynamic> get products => _products;
+  ProductDetailsModal productDetailsModal = ProductDetailsModal();
 
-  Future<void> getProductData(String? productTitle) async {
-    FirebaseFirestore.instance
-        .collection('Porudcts')
-        .where('ProductTitle', isEqualTo: productTitle)
-        .get()
-        .then((value) {
-          value.docs.forEach((element) {
-            _products = element.data();
-          });
-        });
+  Future<void> getProductData(String? productID) async {
+    CollectionReference _collectionProduct =
+    FirebaseFirestore.instance.collection('Porudcts');
+    DocumentSnapshot<Object?> querySnapshot = await _collectionProduct.doc(productID).get();
+    productDetailsModal = ProductDetailsModal.fromJson(querySnapshot.data());
     notifyListeners();
   }
 }

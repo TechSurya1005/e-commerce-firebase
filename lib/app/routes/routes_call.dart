@@ -22,7 +22,7 @@ class Routes {
       case AppRoutes.homeMain:
         return MaterialPageRoute(
             builder: (BuildContext context) => Home_Details_Screen(
-              productName: args.toString(),
+              productID: args.toString(),
             ));
       case AppRoutes.loginNumber:
         return MaterialPageRoute(

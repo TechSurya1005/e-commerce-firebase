@@ -9,7 +9,6 @@ import 'package:weatherappdynamic/screens/auth/login/viewModal/LoginAuthViewModa
 import 'package:weatherappdynamic/utils/customInputFields.dart';
 import 'package:weatherappdynamic/utils/customPasswordFields.dart';
 import 'package:weatherappdynamic/utils/custome_button.dart';
-
 import '../../../../constant/colors.dart';
 import '../../../../utils/utils.dart';
 

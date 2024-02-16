@@ -11,38 +11,45 @@ class HomeViewModal extends ChangeNotifier {
   List<CategoryModal> _categorieis = [];
   List<CategoryModal> get categories => _categorieis;
 
-  Future<void> getData() async {
+  Future<List<CategoryModal>> getData() async {
     QuerySnapshot querySnapshot = await _collectionCate.get();
     querySnapshot.docs.forEach((doc) {
       CategoryModal category = CategoryModal.fromDocumentSnapshot(doc);
       _categorieis.add(category);
     });
-    notifyListeners();
+    print(_categorieis.first.categoryID);
+    return categories;
   }
 
   List<ProductModal> _products = [];
   List<ProductModal> get products => _products;
 
-  Future<void> getProductData(String? categoryTitle) async {
+  Future<List<ProductModal>> getProductData(String? catID) async {
     CollectionReference _collectionProduct =
     FirebaseFirestore.instance.collection('Porudcts');
     // Retrieve data from Firestore
-    QuerySnapshot querySnapshot = await _collectionProduct.where("categoryTitle",isEqualTo: categoryTitle).get();
+    QuerySnapshot querySnapshot = await _collectionProduct.where("categoryID",isEqualTo: _categorieis.first.categoryID!.isEmpty ? catID.toString() : _categoryID).get();
     _products.clear();
+
     querySnapshot.docs.forEach((doc) {
-      ProductModal productModal = ProductModal.fromJson(doc);
+      ProductModal productModal = ProductModal.fromJson(doc.id, doc);
       _products.add(productModal);
+      print(productModal.categoryID);
+      print(productModal.productTitle);
     });
+
+    notifyListeners();
+  return products;
   }
 
+  late String? _categoryID = _categorieis.first.categoryID;
 
-  String _catTitle = "Mobile";
-
-  String get catTitle =>  _catTitle;
+  String? get categoryID =>  _categoryID;
 
   void toggleCatTitle(String title) {
-    _catTitle = title;
-    print(catTitle);
+    _categoryID = title;
+    getProductData(title);
+    print(categoryID);
     notifyListeners();
   }
 }

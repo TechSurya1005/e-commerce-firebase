@@ -2,11 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CategoryModal {
   String? categoryTitle;
+  String? categoryID;
   dynamic image;
 
   CategoryModal({
     this.categoryTitle,
     this.image,
+    this.categoryID
   });
 
   // Factory constructor to create CategoryModal objects from DocumentSnapshot
@@ -15,6 +17,7 @@ class CategoryModal {
     return CategoryModal(
       categoryTitle: data['categoryTitle'],
       image: data['image'],
+      categoryID: data['categoryID'],
     );
   }
 }

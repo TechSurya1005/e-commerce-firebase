@@ -31,6 +31,7 @@ class LoginAuthViewModal extends ChangeNotifier{
       _isLoading = false;
       box.write("isLogged", true);
       Utils.toastMessage("Login Successfully!",successColor);
+      box.write("userID", await getUserDocID().then((value) => value.toString()));
       Navigator.pushReplacementNamed(context, AppRoutes.home);
     } on FirebaseAuthException catch (e) {
       Utils.toastMessage("Wrong password provided for that user",errorColor);
@@ -45,5 +46,13 @@ class LoginAuthViewModal extends ChangeNotifier{
       _isLoading = false;
       print(e);
     }
+  }
+
+
+  Future<String> getUserDocID() async {
+      FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+      String uid = firebaseAuth.currentUser!.uid;
+      print(uid);
+      return uid;
   }
 }

@@ -31,14 +31,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15.0),
       child: ListView(
         children: [
-          const SizedBox(
-            height: 30,
-          ),
           InkWell(
             onTap: () => Navigator.pop(context),
             child: Container(
               alignment: Alignment.centerLeft,
-              child: Icon(Icons.arrow_back),
+              child: const Icon(Icons.arrow_back),
             ),
           ),
           AspectRatio(

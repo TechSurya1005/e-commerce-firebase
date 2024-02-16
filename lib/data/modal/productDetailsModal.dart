@@ -1,57 +1,50 @@
 import 'dart:convert';
-ProductModal productModalFromJson(String str) => ProductModal.fromJson(str,json.decode(str));
-String productModalToJson(ProductModal data) => json.encode(data.toJson());
-class ProductModal {
-  ProductModal({
-      String? description,
-      String? image,
-      String? price,
-      String? productTitle,
-      String? productID,
-      String? variety,
+ProductDetailsModal productDetailsModalFromJson(String str) => ProductDetailsModal.fromJson(json.decode(str));
+String productDetailsModalToJson(ProductDetailsModal data) => json.encode(data.toJson());
+class ProductDetailsModal {
+  ProductDetailsModal({
+      String? description, 
+      int? price, 
+      String? image, 
+      String? productTitle, 
+      String? variety, 
       String? categoryID,}){
     _description = description;
-    _image = image;
     _price = price;
+    _image = image;
     _productTitle = productTitle;
-    _productID = productID;
     _variety = variety;
     _categoryID = categoryID;
 }
 
-  ProductModal.fromJson(String id,dynamic json) {
-
+  ProductDetailsModal.fromJson(dynamic json) {
     _description = json['Description'];
-    _image = json['Image'];
     _price = json['Price'];
+    _image = json['Image'];
     _productTitle = json['ProductTitle'];
-    _productID = id;
     _variety = json['Variety'];
     _categoryID = json['categoryID'];
   }
   String? _description;
+  dynamic? _price;
   String? _image;
-  String? _price;
   String? _productTitle;
-  String? _productID;
   String? _variety;
   String? _categoryID;
 
   String? get description => _description;
+  dynamic? get price => _price;
   String? get image => _image;
-  String? get price => _price;
   String? get productTitle => _productTitle;
-  String? get productID => _productID;
   String? get variety => _variety;
   String? get categoryID => _categoryID;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['Description'] = _description;
-    map['Image'] = _image;
     map['Price'] = _price;
+    map['Image'] = _image;
     map['ProductTitle'] = _productTitle;
-    map['id'] = _productID;
     map['Variety'] = _variety;
     map['categoryID'] = _categoryID;
     return map;
